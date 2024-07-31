@@ -26,7 +26,7 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     EditButton()
                 }
                 ToolbarItem {
@@ -42,10 +42,22 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date(), name: "Joost")
+            
+            var name: String
+            // provide user with input for entering a name for the new item.
+            name = "Erik"
+            // create a new item
+            let newItem = Item(timestamp: Date(), name: name)
+            
             modelContext.insert(newItem)
+
         }
     }
+    private func editItem() {
+        ViewStack {
+            
+    }
+    
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
